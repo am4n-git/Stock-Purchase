@@ -9,9 +9,15 @@ function submitHandler(){
     var ip = Number(initialPrice.value);
     var qty = Number(stocksQuantity.value);
     var curr = Number(currentPrice.value);
-    if(ip&&qty&&curr){
+    if(ip>0&&qty>0&&curr>0){
         calcProfitLoss(ip,qty,curr);
     }
+    else if(ip<=0||qty<=0||curr<=0){
+        outputBox.innerText= "⚠ Required Fields can't be 0 or negative ⚠";
+        outputBox.style.color = 'yellow';
+    }
+
+    
     else{
         outputBox.innerText= '⚠ Enter Required Fields ⚠' ;
         outputBox.style.color = 'yellow';
@@ -24,13 +30,13 @@ function calcProfitLoss(initial, quantity, current){
     if(initial>current){
         var loss = ((initial-current)*quantity).toFixed(2);
         var lossPercent = ((loss/initial)*100).toFixed(2);
-        outputBox.innerText = `Your Loss is ${loss} and Loss Percentage ${lossPercent}%.`
+        outputBox.innerText = `Your Loss is ${loss}₹ and Loss Percentage ${lossPercent}%.`
         outputBox.style.color = 'crimson';
         
     } else if(initial < current){
         var profit = ((current-initial)*quantity).toFixed(2);
         var profitPercent = ((profit/initial)*100).toFixed(2);
-        outputBox.innerText = `Your Profit ${profit} and Profit Percentage ${profitPercent}%.`
+        outputBox.innerText = `Your Profit ${profit}₹ and Profit Percentage ${profitPercent}%.`
         outputBox.style.color = 'green';
     }
     else{
