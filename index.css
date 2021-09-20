@@ -12,7 +12,7 @@ main{
     border: 1px solid lightgray;
     margin: 40px;
     width: 60%;
-    height: 27rem;
+    height: 30rem;
     border-radius: 6px;
 
 }
@@ -36,9 +36,14 @@ main button{
     border: none;
     cursor: pointer;
     border-radius: 6px ;
-    margin-bottom: 30px;
     margin-top: 15px;
 }
+main button:hover{
+    background-color: #2b2b2b;
+    border: 1px solid white;
+    color: white;
+}
 main #output{
+    margin-top: 2rem;
     font-size: larger;
 }

@@ -2,9 +2,9 @@ var initialPrice = document.querySelector("#initial-price");
 var stocksQuantity = document.querySelector("#stocks-quantity");
 var currentPrice = document.querySelector("#current-price");
 var calcBtn = document.querySelector('#submit-btn');
-var outputBox = document.querySelector('#output')
-var bod = document.querySelector(".container")
-
+var outputBox = document.querySelector('#output');
+var bod = document.querySelector(".container");
+var clrbtn = document.querySelector("#clear-btn");
 function submitHandler(){
     var ip = Number(initialPrice.value);
     var qty = Number(stocksQuantity.value);
@@ -12,8 +12,8 @@ function submitHandler(){
     if(ip>0&&qty>0&&curr>0){
         calcProfitLoss(ip,qty,curr);
     }
-    else if(ip<=0||qty<=0||curr<=0){
-        outputBox.innerText= "⚠ Required Fields can't be 0 or negative ⚠";
+    else if(ip<0||qty<0||curr<0){
+        outputBox.innerText= "⚠ Required Fields can't be negative ⚠";
         outputBox.style.color = 'yellow';
     }
 
@@ -45,6 +45,13 @@ function calcProfitLoss(initial, quantity, current){
     }
 }
 
+function clearHandler(){
+    initialPrice.value="";
+    stocksQuantity.value="";
+    currentPrice.value="";
+    outputBox.innerText="";
+}
 
 
-calcBtn.addEventListener("click", submitHandler)
+calcBtn.addEventListener("click", submitHandler);
+clrbtn.addEventListener("click", clearHandler);
