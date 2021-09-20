@@ -29,13 +29,13 @@ function submitHandler(){
 function calcProfitLoss(initial, quantity, current){
     if(initial>current){
         var loss = ((initial-current)*quantity).toFixed(2);
-        var lossPercent = ((loss/initial)*100).toFixed(2);
+        var lossPercent = ((loss / (initial * quantity)) * 100).toFixed(2);
         outputBox.innerText = `Your Loss is ${loss}₹ and Loss Percentage ${lossPercent}%.`
         outputBox.style.color = 'crimson';
         
     } else if(initial < current){
         var profit = ((current-initial)*quantity).toFixed(2);
-        var profitPercent = ((profit/initial)*100).toFixed(2);
+        var profitPercent = ((profit / (initial * quantity)) * 100).toFixed(2);
         outputBox.innerText = `Your Profit ${profit}₹ and Profit Percentage ${profitPercent}%.`
         outputBox.style.color = 'green';
     }
